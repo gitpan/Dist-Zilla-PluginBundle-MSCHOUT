@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.61.
+signed via the Module::Signature module, version 0.55.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,21 +14,22 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 aec2883627cf70bf6d72854f5a328b1be59f6548 Changes
+SHA1 a31f12330d97d8e0bf628f4de7a7d2e40707f1e0 Changes
 SHA1 2567ebef08c659e7f40bee2fbd29f69f00c6c863 LICENSE
-SHA1 4372bae56bd0029fc3922b59658164550b4a7eb3 MANIFEST
-SHA1 efc046531cb50536db1c959a735676f950e1b681 META.yml
-SHA1 586148a8bc095b012ef5f021532619f03fb0d90e Makefile.PL
-SHA1 42c32e269ae21ebb45b94da91603eba5eb3eb4a3 README
-SHA1 80517f8c259781e97a794f70c5aa658259e9f067 dist.ini
-SHA1 105e49b7a7ea9cb59c9937e5b20e3b07d1b94c6f lib/Dist/Zilla/PluginBundle/MSCHOUT.pm
+SHA1 dc968abe2a423680d9ebe80c454446027cb23b8f MANIFEST
+SHA1 4957d9da5ba65e6b1dd3297c561a0d8df987003c META.yml
+SHA1 f9164500759bed5fe8b584a4504fcff55a74cd17 Makefile.PL
+SHA1 29bf14985d590cbd041e2193dd91d138286b1739 README
+SHA1 b82b9ec4a390bbfc915d2fd212cf4ce5a8f857a2 dist.ini
+SHA1 d34fafc0e6ee33ba3737d9aa9279d5b92f3fef23 lib/Dist/Zilla/PluginBundle/MSCHOUT.pm
 SHA1 f9239771091f4b127519fc1861b78ed70a74bc38 t/compile.t
 SHA1 5da741e4cabd859cbd6a3f2ad1c9901b892da4d0 t/release-pod-coverage.t
 SHA1 946206d2ce9fba0e8fda1d429e01245fb8934622 t/release-pod-syntax.t
+SHA1 61cea839dd94aaaeb301ccac9b83cde4c5c91b42 t/signature.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.9 (GNU/Linux)
 
-iEYEARECAAYFAkuxefQACgkQ+CqvSzp9LOzcMgCfYx1yyoH2DPegyw1E0xtblIP+
-pn8AnREwhX+3RqfY4QslHhsWU6tLxxek
-=waLU
+iEYEARECAAYFAkvGKRUACgkQ+CqvSzp9LOx8NwCeJe7b1YmzWsXsWFpendabEb3i
+ioIAnA3HOXv11wf9Q7lGvRKlQObDgHph
+=UyuT
 -----END PGP SIGNATURE-----

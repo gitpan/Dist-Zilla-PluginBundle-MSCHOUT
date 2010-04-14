@@ -1,7 +1,7 @@
 
 
-This archive contains the distribution Dist-Zilla-PluginBundle-MSCHOUT, version
-0.10:
+This archive contains the distribution Dist-Zilla-PluginBundle-MSCHOUT,
+version 0.13:
 
   Use L<Dist::Zilla> like MSCHOUT does
 
@@ -9,4 +9,5 @@ This software is copyright (c) 2010 by Michael Schout.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
+
 

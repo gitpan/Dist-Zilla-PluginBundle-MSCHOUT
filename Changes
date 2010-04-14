@@ -1,4 +1,20 @@
 Revision history for Dist::Zilla::PluginBundle::MSCHOUT
 
+{{$NEXT}}
+    - simplify with Dist::Zilla::PluginBundle::Easy
+    - require Dist::Zilla 2.101040
+    - if no_upload is true, add FakeRelease plugin
+
+0.12  2010-04-09
+    - add Pod::Weaver::Section::SourceGitHub, Pod::Weaver::Section::BugsRT
+      to prereq's
+    - use ArchiveRelease plugin
+    - add BumpVersionFromGit plugin
+    - use FakeRelease releaser
+    - BumpVersionFromGit fix first_version
+
+0.11  2010-03-29
+    - turn off CPAN uploads, use ArchiveRelease releaser plugin
+
 0.10  2010-03-29
     - initial release

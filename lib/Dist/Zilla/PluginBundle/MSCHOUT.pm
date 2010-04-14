@@ -1,66 +1,50 @@
 package Dist::Zilla::PluginBundle::MSCHOUT;
-our $VERSION = '0.10';
+BEGIN {
+  $Dist::Zilla::PluginBundle::MSCHOUT::VERSION = '0.13';
+}
 
 # ABSTRACT: Use L<Dist::Zilla> like MSCHOUT does
 
 use Moose;
 use Moose::Autobox;
 
-with 'Dist::Zilla::Role::PluginBundle';
+with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-use Dist::Zilla::PluginBundle::Filter;
-use Dist::Zilla::PluginBundle::Git;
-use Dist::Zilla::Plugin::AutoPrereq;
-use Dist::Zilla::Plugin::PodWeaver;
-use Dist::Zilla::Plugin::NextRelease;
-use Dist::Zilla::Plugin::NextRelease;
-use Dist::Zilla::Plugin::Repository;
-use Dist::Zilla::Plugin::Bugtracker;
-use Dist::Zilla::Plugin::Homepage;
-use Dist::Zilla::Plugin::Signature;
+sub configure {
+    my $self = shift;
 
-sub bundle_config {
-    my ($self, $section) = @_;
-
-    my $args = $section->{payload};
+    my $args = $self->payload;
 
     my $upload = $$args{no_upload} ? 0 : 1;
 
-    my @plugins = Dist::Zilla::PluginBundle::Filter->bundle_config({
-        name => $section->{name} . '/@Classic',
-        payload => {
-            bundle => '@Classic',
-            remove => [
-                'PodVersion',
-                # remove UploadToCPAN if no_upload is given
-                ($upload ? () : 'UploadToCPAN')
-            ]
-        }
+    $self->add_bundle(Filter => {
+        bundle => '@Classic',
+        remove => ['PodVersion', ($upload ? () : 'UploadToCPAN')]
     });
 
-    my $prefix = 'Dist::Zilla::Plugin::';
-    my @extra = map {[ "$section->{name}/$_->[0]" => "$prefix$_->[0]" => $_->[1] ]}
-    (
-        [ AutoPrereq  => {} ],
-        [ PodWeaver   => {} ],
+    # add FakeRelease plugin if uploads are off
+    unless ($upload) {
+        $self->add_plugins('FakeRelease');
+    }
+
+    $self->add_plugins(
+        qw(
+            AutoPrereq
+            PodWeaver
+            Repository
+            Bugtracker
+            Homepage
+            Signature
+            ArchiveRelease
+        ),
         [
-            NextRelease => {
-                format => '%-2v  %{yyyy-MM-dd}d',
+            BumpVersionFromGit => {
+                first_version => '0.01'
             }
-        ],
-        [ Repository  => { } ],
-        [ Bugtracker  => { } ],
-        [ Homepage    => { } ],
-        [ Signature   => { } ],
+        ]
     );
-    push @plugins, @extra;
 
-    push @plugins, Dist::Zilla::PluginBundle::Git->bundle_config({
-        name    => "$section->{name}/\@Git",
-        payload => { }
-    });
-
-    return @plugins;
+    $self->add_bundle('Git');
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -77,14 +61,17 @@ Dist::Zilla::PluginBundle::MSCHOUT - Use L<Dist::Zilla> like MSCHOUT does
 
 =head1 VERSION
 
-version 0.10
+version 0.13
 
 =head1 DESCRIPTION
 
 This is the pluginbundle that MSCHOUT uses. Use it as:
 
  [@MSCHOUT]
- dist = MyDist
+
+Optionally, for a dist that you do not want to upload to CPAN:
+ [@MSCHOUT]
+ no_upload = 1
 
 It's equivalent to:
 
@@ -92,16 +79,20 @@ It's equivalent to:
  bundle = @Classic
  remove = PodVersion
 
- [AutoPrereq]
- [PodWeaver]
- [NextRelease]
  [@Git]
- [Repository]
+ [ArchiveRelease]
+ [AutoPrereq]
  [Bugtracker]
+ [BumpVersionFromGit]
  [Homepage]
+ [NextRelease]
+ [PodWeaver]
+ [Repository]
  [Signature]
 
-=for Pod::Coverage bundle_config
+In addition, if C<no_upload> is true, then C<UploadToCPAN> is replaced with C<FakeRelease>.
+
+=for Pod::Coverage configure
 
 =head1 AUTHOR
 
