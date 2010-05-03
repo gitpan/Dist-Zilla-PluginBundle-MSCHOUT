@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::MSCHOUT;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MSCHOUT::VERSION = '0.15';
+  $Dist::Zilla::PluginBundle::MSCHOUT::VERSION = '0.16';
 }
 
 # ABSTRACT: Use L<Dist::Zilla> like MSCHOUT does
@@ -43,18 +43,21 @@ sub configure {
             Homepage
             Signature
             ArchiveRelease
+            Git::CommitBuild
         ),
+        [
+            NextRelease => {
+                format => '%-2v  %{yyyy-MM-dd}d'
+            }
+        ],
         [
             BumpVersionFromGit => {
                 first_version => '0.01'
             }
-        ]
+        ],
     );
 
     $self->add_bundle('Git');
-
-    $self->add_plugins('Git::CommitBuild');
-
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -71,7 +74,7 @@ Dist::Zilla::PluginBundle::MSCHOUT - Use L<Dist::Zilla> like MSCHOUT does
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 DESCRIPTION
 
