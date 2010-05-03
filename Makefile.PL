@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
                                            },
                        'ABSTRACT' => 'Use L<Dist::Zilla> like MSCHOUT does',
                        'EXE_FILES' => [],
-                       'VERSION' => '0.14',
+                       'VERSION' => '0.15',
                        'PREREQ_PM' => {
                                         'Dist::Zilla::Plugin::PodWeaver' => '0',
                                         'Dist::Zilla::Role::PluginBundle::Easy' => '0',
@@ -44,7 +44,7 @@ my %WriteMakefileArgs = (
                                         'Dist::Zilla::Plugin::ArchiveRelease' => '0',
                                         'Dist::Zilla::Plugin::Homepage' => '0',
                                         'Dist::Zilla::Plugin::BumpVersionFromGit' => '0',
-                                        'Dist::Zilla::PluginBundle::Git' => '0'
+                                        'Dist::Zilla::PluginBundle::Git' => '1.101230'
                                       },
                        'LICENSE' => 'perl'
                      );

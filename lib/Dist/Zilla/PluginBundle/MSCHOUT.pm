@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::MSCHOUT;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MSCHOUT::VERSION = '0.14';
+  $Dist::Zilla::PluginBundle::MSCHOUT::VERSION = '0.15';
 }
 
 # ABSTRACT: Use L<Dist::Zilla> like MSCHOUT does
@@ -52,6 +52,9 @@ sub configure {
     );
 
     $self->add_bundle('Git');
+
+    $self->add_plugins('Git::CommitBuild');
+
 }
 
 __PACKAGE__->meta->make_immutable;
@@ -68,7 +71,7 @@ Dist::Zilla::PluginBundle::MSCHOUT - Use L<Dist::Zilla> like MSCHOUT does
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 DESCRIPTION
 
