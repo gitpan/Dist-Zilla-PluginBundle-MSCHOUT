@@ -1,6 +1,6 @@
 package Dist::Zilla::PluginBundle::MSCHOUT;
 BEGIN {
-  $Dist::Zilla::PluginBundle::MSCHOUT::VERSION = '0.16';
+  $Dist::Zilla::PluginBundle::MSCHOUT::VERSION = '0.17';
 }
 
 # ABSTRACT: Use L<Dist::Zilla> like MSCHOUT does
@@ -36,7 +36,7 @@ sub configure {
 
     $self->add_plugins(
         qw(
-            AutoPrereq
+            AutoPrereqs
             PodWeaver
             Repository
             Bugtracker
@@ -74,7 +74,7 @@ Dist::Zilla::PluginBundle::MSCHOUT - Use L<Dist::Zilla> like MSCHOUT does
 
 =head1 VERSION
 
-version 0.16
+version 0.17
 
 =head1 DESCRIPTION
 
@@ -94,7 +94,7 @@ It's equivalent to:
 
  [@Git]
  [ArchiveRelease]
- [AutoPrereq]
+ [AutoPrereqs]
  [Bugtracker]
  [BumpVersionFromGit]
  [Homepage]
@@ -113,7 +113,7 @@ In addition, if C<no_upload> is true, then C<UploadToCPAN> is replaced with C<Fa
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Michael Schout.
+This software is copyright (c) 2011 by Michael Schout.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
